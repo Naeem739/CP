@@ -2,43 +2,41 @@
 
 using namespace std;
 
-typedef long long int  ll;
+typedef long long int ll;
 typedef pair < ll, ll > Pair;
 #define endl '\n'
 #define Pair pair<ll,ll>
 #define all(a)(a).begin(), (a).end()
 const ll inf = 1e18 + 123;
 const int N = 1e6 + 123;
-const int mod = 998244353; 
-
 
 void answer() {
      
-     ll n,k;
+     ll n,k; cin >> n >> k; 
+     ll sz = sqrt(n); 
      
-     cin >> n >> k; 
-     if(k == 1 ){
-     	  cout << 0 << endl; 
+     if(k>2*sz){
+     	  cout << -1 << endl; 
      	  return; 
      }
-     
-     n = n % mod; 
-     k = k % mod; 
-     ll total = n * k; 
-     ll valid = total - n; 
-     
-     ll tm =(((valid - n ) % mod + mod )% mod ) * n % mod;
-     
-     
-     ll ans = ((n *(n+1))/2) % mod;
+     vector<ll>v; 
 
-     ans  = (ans + tm) % mod; 
+     for (ll i = 1; i*i <= n  ; i++ ) {
+     	   if( n % i == 0) {
+     	   	v.push_back(i); 
+     	   	if(n/i != i) v.push_back(n/i); 
+     	   }
+     	   
+     }
      
-     cout << ans << endl;   
-    
-
+     sort(v.begin(),v.end()); 
      
-
+     if(v.size()>=k)cout << v[k-1]<<endl ;
+     else 
+     cout << -1 << endl; 
+     
+     
+   
 }
 
 

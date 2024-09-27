@@ -2,43 +2,45 @@
 
 using namespace std;
 
-typedef long long int  ll;
+typedef long long int ll;
 typedef pair < ll, ll > Pair;
 #define endl '\n'
 #define Pair pair<ll,ll>
 #define all(a)(a).begin(), (a).end()
 const ll inf = 1e18 + 123;
 const int N = 1e6 + 123;
-const int mod = 998244353; 
 
+int number_of_divisors(ll n ){
+	 ll x = 0; 
+	 for(int i = 1; 1LL*i * i <= n; i++ ) {
+	 	 if( n % i == 0 ) {
+	 	 	 if (n/ i != i )x += 2; 
+	 	 	 else x ++; 
+	 	 }
+	 }
+	 return x ; 
+	 
+}
 
 void answer() {
-     
-     ll n,k;
-     
-     cin >> n >> k; 
-     if(k == 1 ){
-     	  cout << 0 << endl; 
-     	  return; 
-     }
-     
-     n = n % mod; 
-     k = k % mod; 
-     ll total = n * k; 
-     ll valid = total - n; 
-     
-     ll tm =(((valid - n ) % mod + mod )% mod ) * n % mod;
+	
+	
+	 int n; cin >> n; 
+	 ll a[ n ]; 
+	 for(auto &u: a )cin >> u; 
+	 ll gcd = 0; 
+	 
+	 for(auto u: a )gcd = __gcd(gcd, u ); 
+	 
+	 cout << number_of_divisors(gcd) << endl; 
+	
+	
      
      
-     ll ans = ((n *(n+1))/2) % mod;
-
-     ans  = (ans + tm) % mod; 
      
-     cout << ans << endl;   
-    
-
      
-
+     
+   
 }
 
 
