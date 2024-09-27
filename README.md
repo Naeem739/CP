@@ -1,3 +1,8 @@
+### Code Example
+
+Here’s the Python script that fetches the total solve count from Codeforces:
+
+```python
 import requests
 
 def fetch_solve_count(handle):
